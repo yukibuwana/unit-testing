@@ -9,6 +9,7 @@ public class Dollar extends Money {
         return Money.dollar(amount * multiplier);
     }
 
+    //TODO: use parent class
     @Override
     protected String currency() {
         return currency;

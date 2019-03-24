@@ -9,6 +9,7 @@ public class Franc extends Money {
         return Money.franc(amount * multiplier);
     }
 
+    //TODO: use parent class
     @Override
     protected String currency() {
         return currency;
