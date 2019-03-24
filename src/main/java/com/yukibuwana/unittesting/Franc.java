@@ -8,10 +8,4 @@ public class Franc extends Money {
     protected Money times(int multiplier) {
         return Money.franc(amount * multiplier);
     }
-
-    //TODO: use parent class
-    @Override
-    protected String currency() {
-        return currency;
-    }
 }

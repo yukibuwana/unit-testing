@@ -9,7 +9,9 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    protected abstract String currency();
+    protected String currency() {
+        return currency;
+    }
 
     protected abstract Money times(int multiplier);
 
@@ -27,8 +29,4 @@ public abstract class Money {
         return amount == money.amount
                 && this.getClass().equals(obj.getClass());
     }
-
-//    protected String currency() {
-//        return currency;
-//    }
 }
