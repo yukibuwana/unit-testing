@@ -1,0 +1,11 @@
+language: java
+dist: trusty
+addons:
+  sonarcloud:
+    projectKey: "test-unit-testing"
+    organization: "yukibuwana-github"
+    token:
+      secure: 937e95f1dc700357384a6d81a50712a516669c71
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
