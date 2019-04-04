@@ -28,8 +28,9 @@ public class Money implements Expression {
                 && this.currency == money.currency;
     }
 
-    public Money reduce(String to) {
-        return this;
+    @Override
+    public Money reduce(Bank bank, String to) {
+        return new Money(amount / bank.rate(this.currency, to), to);
     }
 
     @Override
@@ -40,11 +41,13 @@ public class Money implements Expression {
                 '}';
     }
 
-    protected Money times(int multiplier) {
+    @Override
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, this.currency);
     }
 
-    public Expression plus(Money addend) {
+    @Override
+    public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
 }

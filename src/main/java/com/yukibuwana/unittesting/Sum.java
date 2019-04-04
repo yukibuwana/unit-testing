@@ -1,17 +1,29 @@
 package com.yukibuwana.unittesting;
 
 public class Sum implements Expression {
-    Money augment;
-    Money addmend;
+    Expression augment;
+    Expression addmend;
 
-    public Sum(Money augment, Money addmend) {
+    public Sum(Expression augment, Expression addmend) {
         this.augment = augment;
         this.addmend = addmend;
     }
 
-    public Money reduce(String to) {
-        int amount = augment.amount + addmend.amount;
+    @Override
+    public Money reduce(Bank bank, String to) {
+        int amount = augment.reduce(bank, to).amount +
+                     addmend.reduce(bank, to).amount;
 
         return new Money(amount, to);
+    }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return new Sum(this, addmend);
+    }
+
+    @Override
+    public Expression times(int multiplier) {
+        return new Sum(augment.times(multiplier), addmend.times(multiplier));
     }
 }
